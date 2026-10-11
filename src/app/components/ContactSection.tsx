@@ -29,30 +29,30 @@ export default function ContactSection({ onCopyText, onShowToast }: ContactSecti
   };
 
   return (
-    <section id="contact" style={{ padding: '90px 0 110px 0', position: 'relative' }}>
+    <section id="contact" className="contact-section-wrap">
       <div className="container">
         <div className="contact-card-box">
           {/* Left info column */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div className="status-pill" style={{ alignSelf: 'flex-start' }}>
+          <div className="contact-info-col">
+            <div className="status-pill status-pill-align">
               <span className="status-dot" />
               <span>Direct Communication</span>
             </div>
 
-            <h2 className="font-formal" style={{ fontSize: '2.1rem', fontWeight: 800, lineHeight: 1.2 }}>
+            <h2 className="font-formal contact-main-title">
               Let us build something <span className="text-gradient">exceptional</span> together.
             </h2>
 
-            <p style={{ fontSize: '1.05rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+            <p className="contact-sub-desc">
               Whether you are looking to hire a Senior Frontend Specialist, FullStack Engineer, or looking to discuss high-concurrency Next.js architecture and WCAG compliance — reach out directly.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '8px' }}>
+            <div className="channels-stack">
               {/* Email */}
               <div className="channel-box">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div className="channel-left-meta">
                   <div className="channel-icon-pill">✉️</div>
-                  <div>
+                  <div className="channel-text-group">
                     <div className="channel-caption">Email</div>
                     <a href="mailto:omjdeshmukh@gmail.com" className="channel-link">
                       omjdeshmukh@gmail.com
@@ -70,9 +70,9 @@ export default function ContactSection({ onCopyText, onShowToast }: ContactSecti
 
               {/* Phone */}
               <div className="channel-box">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div className="channel-left-meta">
                   <div className="channel-icon-pill">📞</div>
-                  <div>
+                  <div className="channel-text-group">
                     <div className="channel-caption">Phone / WhatsApp</div>
                     <a href="tel:+919926718163" className="channel-link">
                       +91 9926718163
@@ -90,9 +90,9 @@ export default function ContactSection({ onCopyText, onShowToast }: ContactSecti
 
               {/* Location */}
               <div className="channel-box">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div className="channel-left-meta">
                   <div className="channel-icon-pill">📍</div>
-                  <div>
+                  <div className="channel-text-group">
                     <div className="channel-caption">Current Location</div>
                     <div className="channel-link">Nagpur, India (Open to Remote / Relocation)</div>
                   </div>
@@ -102,11 +102,11 @@ export default function ContactSection({ onCopyText, onShowToast }: ContactSecti
           </div>
 
           {/* Right form column */}
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-            <h3 className="font-formal" style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>
+          <form onSubmit={handleSubmit} className="contact-form-col">
+            <h3 className="font-formal form-heading-text">
               Send a Direct Message
             </h3>
-            <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', marginBottom: '8px' }}>
+            <p className="form-sub-text">
               Fill in the details below to reach Omprakash immediately.
             </p>
 
@@ -158,16 +158,14 @@ export default function ContactSection({ onCopyText, onShowToast }: ContactSecti
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Share role requirements, team details, or project scope..."
-                className="form-control"
-                style={{ resize: 'vertical' }}
+                className="form-control form-textarea"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="btn btn-primary"
-              style={{ width: '100%', marginTop: '6px' }}
+              className="btn btn-primary submit-action-btn"
             >
               {isSubmitting ? (
                 <span>Dispatching Message...</span>
@@ -186,6 +184,11 @@ export default function ContactSection({ onCopyText, onShowToast }: ContactSecti
       </div>
 
       <style jsx>{`
+        .contact-section-wrap {
+          padding: 90px 0 110px 0;
+          position: relative;
+        }
+
         .contact-card-box {
           display: grid;
           grid-template-columns: 0.95fr 1.05fr;
@@ -193,47 +196,103 @@ export default function ContactSection({ onCopyText, onShowToast }: ContactSecti
           background: var(--bg-card);
           border: 1px solid var(--border-subtle);
           border-radius: var(--radius-lg);
-          padding: 50px;
+          padding: 48px;
           box-shadow: var(--shadow-lg);
           backdrop-filter: blur(20px);
+          width: 100%;
+          box-sizing: border-box;
         }
+
+        .contact-info-col {
+          display: flex;
+          flex-direction: column;
+          gap: 22px;
+          min-width: 0;
+        }
+
+        .status-pill-align {
+          align-self: flex-start;
+        }
+
+        .contact-main-title {
+          font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+          font-weight: 800;
+          line-height: 1.2;
+        }
+
+        .contact-sub-desc {
+          font-size: clamp(0.95rem, 2vw, 1.05rem);
+          color: var(--text-muted);
+          line-height: 1.6;
+        }
+
+        .channels-stack {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          margin-top: 6px;
+        }
+
         .channel-box {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 16px 20px;
+          padding: 14px 18px;
           background: rgba(255, 255, 255, 0.03);
           border: 1px solid var(--border-subtle);
           border-radius: var(--radius-md);
           transition: all 0.2s ease;
+          gap: 12px;
+          min-width: 0;
         }
+
         .channel-box:hover {
           border-color: var(--border-glow);
           background: rgba(255, 255, 255, 0.06);
         }
+
+        .channel-left-meta {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          min-width: 0;
+          flex: 1;
+        }
+
         .channel-icon-pill {
-          width: 42px;
-          height: 42px;
+          width: 40px;
+          height: 40px;
           border-radius: var(--radius-sm);
           background: rgba(99, 102, 241, 0.12);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.15rem;
+          font-size: 1.1rem;
+          flex-shrink: 0;
         }
+
+        .channel-text-group {
+          min-width: 0;
+          flex: 1;
+        }
+
         .channel-caption {
-          font-size: 0.78rem;
+          font-size: 0.76rem;
           color: var(--text-dim);
           text-transform: uppercase;
           letter-spacing: 0.05em;
           font-weight: 600;
         }
+
         .channel-link {
-          font-size: 0.96rem;
+          font-size: 0.94rem;
           font-weight: 600;
           color: var(--text-primary);
           text-decoration: none;
+          word-break: break-word;
+          display: block;
         }
+
         .copy-chip-btn {
           background: transparent;
           border: 1px solid var(--border-subtle);
@@ -243,42 +302,116 @@ export default function ContactSection({ onCopyText, onShowToast }: ContactSecti
           font-size: 0.8rem;
           cursor: pointer;
           transition: all 0.2s ease;
+          flex-shrink: 0;
         }
+
         .copy-chip-btn:hover {
           color: var(--text-primary);
           border-color: var(--accent-cyan);
         }
+
+        .contact-form-col {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
+        }
+
+        .form-heading-text {
+          font-size: 1.35rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin-bottom: 2px;
+        }
+
+        .form-sub-text {
+          font-size: 0.9rem;
+          color: var(--text-muted);
+          margin-bottom: 6px;
+        }
+
         .form-field {
           display: flex;
           flex-direction: column;
           gap: 6px;
+          width: 100%;
+          box-sizing: border-box;
         }
+
         .form-label-text {
-          font-size: 0.88rem;
+          font-size: 0.86rem;
           font-weight: 600;
           color: var(--text-secondary);
         }
+
         .form-control {
           width: 100%;
-          padding: 13px 16px;
+          max-width: 100%;
+          box-sizing: border-box;
+          padding: 13px 15px;
           border-radius: var(--radius-md);
           background: var(--bg-input);
           border: 1px solid var(--border-subtle);
           color: var(--text-primary);
-          font-size: 0.94rem;
+          font-size: 16px;
           font-family: inherit;
           outline: none;
           transition: all 0.2s ease;
         }
+
         .form-control:focus {
           border-color: var(--accent-cyan);
           box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
         }
+
+        .form-textarea {
+          resize: vertical;
+          min-height: 100px;
+        }
+
+        .submit-action-btn {
+          width: 100%;
+          margin-top: 6px;
+          padding: 14px 20px;
+          font-size: 0.96rem;
+        }
+
         @media (max-width: 960px) {
           .contact-card-box {
             grid-template-columns: 1fr;
-            padding: 32px;
+            padding: 32px 24px;
             gap: 36px;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .contact-section-wrap {
+            padding: 60px 0 80px 0;
+          }
+
+          .contact-card-box {
+            padding: 22px 16px;
+            border-radius: var(--radius-md);
+            gap: 30px;
+          }
+
+          .channel-box {
+            padding: 12px 12px;
+          }
+
+          .channel-link {
+            font-size: 0.88rem;
+          }
+
+          .copy-chip-btn {
+            padding: 5px 10px;
+            font-size: 0.75rem;
+          }
+
+          .form-control {
+            padding: 11px 13px;
           }
         }
       `}</style>

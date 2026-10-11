@@ -397,3 +397,11 @@ body {
   :root { --nav-height: 68px; }
   .section-title { font-size: 2rem; }
 }
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
