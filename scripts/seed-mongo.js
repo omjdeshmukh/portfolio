@@ -23,7 +23,7 @@ loadEnv();
 
 const uri =
   process.env.MONGODB_URI ||
-  'mongodb+srv://omportfolio:123456%40Om@cluster0.dgpv7aj.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Cluster0';
+  'mongodb+srv://portfolio:portfolio@cluster0.dgpv7aj.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Cluster0';
 
 // Define Schemas directly in JS for standalone script execution
 const ExperienceSchema = new mongoose.Schema(
