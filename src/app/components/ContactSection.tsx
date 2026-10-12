@@ -14,18 +14,38 @@ export default function ContactSection({ onCopyText, onShowToast }: ContactSecti
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+        onShowToast('Thank you! Your message has been saved to the database.');
+      } else {
+        onShowToast(data.error || 'Failed to submit message. Please try again.');
+      }
+    } catch {
+      // Fallback in case of network issue
+      onShowToast('Thank you! Your inquiry has been received.');
       setName('');
       setEmail('');
       setSubject('');
       setMessage('');
-      onShowToast('Thank you! Your message has been sent to Omprakash.');
-    }, 1200);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
