@@ -232,7 +232,7 @@ export default function Hero({ onCopyEmail }: HeroProps) {
                 style={{
                   position: 'absolute',
                   top: '24px',
-                  left: '-24px',
+                  left: '-14px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
@@ -256,7 +256,7 @@ export default function Hero({ onCopyEmail }: HeroProps) {
                 style={{
                   position: 'absolute',
                   bottom: '24px',
-                  right: '-24px',
+                  right: '-14px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
