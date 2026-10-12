@@ -219,8 +219,9 @@ export default function Hero({ onCopyEmail }: HeroProps) {
                   style={{
                     position: 'absolute',
                     inset: 0,
-                    background: 'linear-gradient(180deg, transparent 65%, rgba(7, 9, 14, 0.85) 100%)',
+                    background: 'linear-gradient(180deg, transparent 70%, var(--bg-card) 100%)',
                     pointerEvents: 'none',
+                    opacity: 0.85,
                   }}
                 />
               </div>
@@ -231,21 +232,22 @@ export default function Hero({ onCopyEmail }: HeroProps) {
                 style={{
                   position: 'absolute',
                   top: '24px',
-                  left: '-24px',
+                  left: '-14px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
                   padding: '10px 18px',
-                  background: 'rgba(13, 18, 29, 0.9)',
+                  background: 'var(--bg-card)',
+                  color: 'var(--text-primary)',
                   border: '1px solid var(--border-glow)',
                   borderRadius: 'var(--radius-md)',
                   boxShadow: 'var(--shadow-md)',
                   fontSize: '0.86rem',
                   fontWeight: 600,
-                  backdropFilter: 'blur(12px)',
+                  backdropFilter: 'blur(16px)',
                 }}
               >
-                <span>▲</span>
+                <span style={{ color: 'var(--accent-indigo)' }}>▲</span>
                 <span>Next.js 14 & React 18+</span>
               </div>
 
@@ -254,19 +256,19 @@ export default function Hero({ onCopyEmail }: HeroProps) {
                 style={{
                   position: 'absolute',
                   bottom: '24px',
-                  right: '-24px',
+                  right: '-14px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
                   padding: '10px 18px',
-                  background: 'rgba(13, 18, 29, 0.9)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  background: 'var(--bg-card)',
+                  border: '1px solid rgba(16, 185, 129, 0.35)',
                   borderRadius: 'var(--radius-md)',
                   boxShadow: 'var(--shadow-md)',
                   fontSize: '0.86rem',
                   fontWeight: 600,
                   color: 'var(--accent-emerald)',
-                  backdropFilter: 'blur(12px)',
+                  backdropFilter: 'blur(16px)',
                 }}
               >
                 <span>♿</span>
