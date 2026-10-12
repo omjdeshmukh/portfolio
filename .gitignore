@@ -23,6 +23,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# local message data
+/data/messages.json
+
 # local environment variables
 .env
 .env*.local
